@@ -43,12 +43,15 @@ class _WeatherpageState extends State<Weatherpage> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text(weather?.cityName ?? "Loading City..."),
-
-          Text("${weather?.temperature.round()}C")
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(weather?.cityName ?? "Loading City..."),
+        
+            Text("${weather?.temperature.round()}°C")
+          ],
+        ),
       ),
     );
   }
