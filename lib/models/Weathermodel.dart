@@ -12,9 +12,9 @@ class Weather{
   //Method to decode the data from API
   factory Weather.fromjson(Map<String, dynamic> json){
     return Weather(
-      cityName: json["main"],
+      cityName: json["name"],
       temperature: json["main"]["temp"].toDouble(),
-      mainCondition: json["main"][0]["main"],
+      mainCondition: json["weather"][0]["main"],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:weatherapp/Api_key.dart';
 import 'package:weatherapp/models/Weathermodel.dart';
 import 'package:weatherapp/services/Weatherservice.dart';
@@ -24,7 +25,11 @@ class _WeatherpageState extends State<Weatherpage> {
   final cityName = await _weatherService.getCurrentCity();
 
   try{
-    _weatherService.getWeather(cityName);
+    final fetchedWeather = await _weatherService.getWeather(cityName);
+
+    setState(() {
+      weather = fetchedWeather;
+    });
   }
   catch(e){
     print(e);
@@ -48,6 +53,9 @@ class _WeatherpageState extends State<Weatherpage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(weather?.cityName ?? "Loading City..."),
+
+            //Animation
+            Lottie.asset('assets/Sunny-Animation.json'),
         
             Text("${weather?.temperature.round()}°C")
           ],
